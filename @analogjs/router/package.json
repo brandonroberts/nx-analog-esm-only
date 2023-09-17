@@ -1,0 +1,57 @@
+{
+  "name": "@analogjs/router",
+  "version": "0.2.3",
+  "description": "Filesystem-based routing for Angular",
+  "author": "Brandon Roberts <robertsbt@gmail.com>",
+  "keywords": [
+    "angular",
+    "router",
+    "filesystem-routing",
+    "meta-framework"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/analogjs/analog/issues"
+  },
+  "homepage": "https://analogjs.org",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/analogjs/analog.git"
+  },
+  "peerDependencies": {
+    "@angular/core": "^15.0.0 || ^16.0.0",
+    "@angular/router": "^15.0.0 || ^16.0.0"
+  },
+  "optionalDependencies": {
+    "@analogjs/content": "^0.2.3"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "ng-update": {
+    "packageGroup": [
+      "@analogjs/astro-angular",
+      "@analogjs/platform",
+      "@analogjs/content",
+      "@analogjs/router",
+      "@analogjs/trpc",
+      "@analogjs/vite-plugin-angular",
+      "@analogjs/vite-plugin-nitro"
+    ],
+    "migrations": "./migrations/migration.json"
+  },
+  "module": "fesm2022/analogjs-router.mjs",
+  "typings": "index.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./index.d.ts",
+      "esm2022": "./esm2022/analogjs-router.mjs",
+      "esm": "./esm2022/analogjs-router.mjs",
+      "default": "./fesm2022/analogjs-router.mjs"
+    }
+  },
+  "sideEffects": false
+}

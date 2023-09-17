@@ -1,0 +1,25 @@
+import { ENVIRONMENT_INITIALIZER, makeEnvironmentProviders, } from '@angular/core';
+import { provideRouter } from '@angular/router';
+import { routes } from './routes';
+import { updateMetaTagsOnRouteChange } from './meta-tags';
+/**
+ * Sets up providers for the Angular router, and registers
+ * file-based routes. Additional features can be provided
+ * to further configure the behavior of the router.
+ *
+ * @param features
+ * @returns Providers and features to configure the router with routes
+ */
+export function provideFileRouter(...features) {
+    return makeEnvironmentProviders([
+        // TODO: remove type casting after Angular >=15.1.1 upgrade
+        // https://github.com/angular/angular/pull/48720
+        provideRouter(routes, ...features).ɵproviders,
+        {
+            provide: ENVIRONMENT_INITIALIZER,
+            multi: true,
+            useValue: () => updateMetaTagsOnRouteChange(),
+        },
+    ]);
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHJvdmlkZS1maWxlLXJvdXRlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uL3BhY2thZ2VzL3JvdXRlci9zcmMvbGliL3Byb3ZpZGUtZmlsZS1yb3V0ZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxFQUNMLHVCQUF1QixFQUV2Qix3QkFBd0IsR0FFekIsTUFBTSxlQUFlLENBQUM7QUFDdkIsT0FBTyxFQUFFLGFBQWEsRUFBa0IsTUFBTSxpQkFBaUIsQ0FBQztBQUVoRSxPQUFPLEVBQUUsTUFBTSxFQUFFLE1BQU0sVUFBVSxDQUFDO0FBQ2xDLE9BQU8sRUFBRSwyQkFBMkIsRUFBRSxNQUFNLGFBQWEsQ0FBQztBQUUxRDs7Ozs7OztHQU9HO0FBQ0gsTUFBTSxVQUFVLGlCQUFpQixDQUMvQixHQUFHLFFBQTBCO0lBRTdCLE9BQU8sd0JBQXdCLENBQUM7UUFDOUIsMkRBQTJEO1FBQzNELGdEQUFnRDtRQUU5QyxhQUFhLENBQUMsTUFBTSxFQUFFLEdBQUcsUUFBUSxDQUdsQyxDQUFDLFVBQVU7UUFDWjtZQUNFLE9BQU8sRUFBRSx1QkFBdUI7WUFDaEMsS0FBSyxFQUFFLElBQUk7WUFDWCxRQUFRLEVBQUUsR0FBRyxFQUFFLENBQUMsMkJBQTJCLEVBQUU7U0FDOUM7S0FDRixDQUFDLENBQUM7QUFDTCxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtcbiAgRU5WSVJPTk1FTlRfSU5JVElBTElaRVIsXG4gIEVudmlyb25tZW50UHJvdmlkZXJzLFxuICBtYWtlRW52aXJvbm1lbnRQcm92aWRlcnMsXG4gIFByb3ZpZGVyLFxufSBmcm9tICdAYW5ndWxhci9jb3JlJztcbmltcG9ydCB7IHByb3ZpZGVSb3V0ZXIsIFJvdXRlckZlYXR1cmVzIH0gZnJvbSAnQGFuZ3VsYXIvcm91dGVyJztcblxuaW1wb3J0IHsgcm91dGVzIH0gZnJvbSAnLi9yb3V0ZXMnO1xuaW1wb3J0IHsgdXBkYXRlTWV0YVRhZ3NPblJvdXRlQ2hhbmdlIH0gZnJvbSAnLi9tZXRhLXRhZ3MnO1xuXG4vKipcbiAqIFNldHMgdXAgcHJvdmlkZXJzIGZvciB0aGUgQW5ndWxhciByb3V0ZXIsIGFuZCByZWdpc3RlcnNcbiAqIGZpbGUtYmFzZWQgcm91dGVzLiBBZGRpdGlvbmFsIGZlYXR1cmVzIGNhbiBiZSBwcm92aWRlZFxuICogdG8gZnVydGhlciBjb25maWd1cmUgdGhlIGJlaGF2aW9yIG9mIHRoZSByb3V0ZXIuXG4gKlxuICogQHBhcmFtIGZlYXR1cmVzXG4gKiBAcmV0dXJucyBQcm92aWRlcnMgYW5kIGZlYXR1cmVzIHRvIGNvbmZpZ3VyZSB0aGUgcm91dGVyIHdpdGggcm91dGVzXG4gKi9cbmV4cG9ydCBmdW5jdGlvbiBwcm92aWRlRmlsZVJvdXRlcihcbiAgLi4uZmVhdHVyZXM6IFJvdXRlckZlYXR1cmVzW11cbik6IEVudmlyb25tZW50UHJvdmlkZXJzIHtcbiAgcmV0dXJuIG1ha2VFbnZpcm9ubWVudFByb3ZpZGVycyhbXG4gICAgLy8gVE9ETzogcmVtb3ZlIHR5cGUgY2FzdGluZyBhZnRlciBBbmd1bGFyID49MTUuMS4xIHVwZ3JhZGVcbiAgICAvLyBodHRwczovL2dpdGh1Yi5jb20vYW5ndWxhci9hbmd1bGFyL3B1bGwvNDg3MjBcbiAgICAoXG4gICAgICBwcm92aWRlUm91dGVyKHJvdXRlcywgLi4uZmVhdHVyZXMpIGFzIHVua25vd24gYXMge1xuICAgICAgICDJtXByb3ZpZGVyczogUHJvdmlkZXJbXTtcbiAgICAgIH1cbiAgICApLsm1cHJvdmlkZXJzLFxuICAgIHtcbiAgICAgIHByb3ZpZGU6IEVOVklST05NRU5UX0lOSVRJQUxJWkVSLFxuICAgICAgbXVsdGk6IHRydWUsXG4gICAgICB1c2VWYWx1ZTogKCkgPT4gdXBkYXRlTWV0YVRhZ3NPblJvdXRlQ2hhbmdlKCksXG4gICAgfSxcbiAgXSk7XG59XG4iXX0=

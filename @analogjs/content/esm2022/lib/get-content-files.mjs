@@ -1,0 +1,21 @@
+/**
+ * Returns the list of content files by filename with ?analog-content-list=true.
+ * We use the query param to transform the return into an array of
+ * just front matter attributes.
+ *
+ * @returns
+ */
+export const getContentFilesList = () => import.meta.glob('/src/content/**/*.md', {
+    eager: true,
+    import: 'default',
+    query: { 'analog-content-list': true },
+});
+/**
+ * Returns the lazy loaded content files for lookups.
+ *
+ * @returns
+ */
+export const getContentFiles = () => import.meta.glob(['/src/content/**/*.md'], {
+    as: 'raw',
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZ2V0LWNvbnRlbnQtZmlsZXMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9wYWNrYWdlcy9jb250ZW50L3NyYy9saWIvZ2V0LWNvbnRlbnQtZmlsZXMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7OztHQU1HO0FBQ0gsTUFBTSxDQUFDLE1BQU0sbUJBQW1CLEdBQUcsR0FBRyxFQUFFLENBQ3RDLE1BQU0sQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFzQixzQkFBc0IsRUFBRTtJQUM1RCxLQUFLLEVBQUUsSUFBSTtJQUNYLE1BQU0sRUFBRSxTQUFTO0lBQ2pCLEtBQUssRUFBRSxFQUFFLHFCQUFxQixFQUFFLElBQUksRUFBRTtDQUN2QyxDQUFDLENBQUM7QUFFTDs7OztHQUlHO0FBQ0gsTUFBTSxDQUFDLE1BQU0sZUFBZSxHQUFHLEdBQUcsRUFBRSxDQUNsQyxNQUFNLENBQUMsSUFBSSxDQUFDLElBQUksQ0FBQyxDQUFDLHNCQUFzQixDQUFDLEVBQUU7SUFDekMsRUFBRSxFQUFFLEtBQUs7Q0FDVixDQUFDLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIFJldHVybnMgdGhlIGxpc3Qgb2YgY29udGVudCBmaWxlcyBieSBmaWxlbmFtZSB3aXRoID9hbmFsb2ctY29udGVudC1saXN0PXRydWUuXG4gKiBXZSB1c2UgdGhlIHF1ZXJ5IHBhcmFtIHRvIHRyYW5zZm9ybSB0aGUgcmV0dXJuIGludG8gYW4gYXJyYXkgb2ZcbiAqIGp1c3QgZnJvbnQgbWF0dGVyIGF0dHJpYnV0ZXMuXG4gKlxuICogQHJldHVybnNcbiAqL1xuZXhwb3J0IGNvbnN0IGdldENvbnRlbnRGaWxlc0xpc3QgPSAoKSA9PlxuICBpbXBvcnQubWV0YS5nbG9iPFJlY29yZDxzdHJpbmcsIGFueT4+KCcvc3JjL2NvbnRlbnQvKiovKi5tZCcsIHtcbiAgICBlYWdlcjogdHJ1ZSxcbiAgICBpbXBvcnQ6ICdkZWZhdWx0JyxcbiAgICBxdWVyeTogeyAnYW5hbG9nLWNvbnRlbnQtbGlzdCc6IHRydWUgfSxcbiAgfSk7XG5cbi8qKlxuICogUmV0dXJucyB0aGUgbGF6eSBsb2FkZWQgY29udGVudCBmaWxlcyBmb3IgbG9va3Vwcy5cbiAqXG4gKiBAcmV0dXJuc1xuICovXG5leHBvcnQgY29uc3QgZ2V0Q29udGVudEZpbGVzID0gKCkgPT5cbiAgaW1wb3J0Lm1ldGEuZ2xvYihbJy9zcmMvY29udGVudC8qKi8qLm1kJ10sIHtcbiAgICBhczogJ3JhdycsXG4gIH0pO1xuIl19
