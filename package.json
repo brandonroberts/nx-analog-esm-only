@@ -39,6 +39,8 @@
   },
   "devDependencies": {
     "@analogjs/platform": "file:./@analogjs/platform",
+    "@analogjs/vite-plugin-angular": "file:./@analogjs/vite-plugin-angular",
+    "@analogjs/vite-plugin-nitro": "file:./@analogjs/vite-plugin-nitro",
     "@angular-devkit/build-angular": "^16.2.0",
     "@angular/cli": "^16.2.0",
     "@angular/compiler-cli": "^16.2.0",
